@@ -1,0 +1,10 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/trusty32"
+  config.vm.hostname = "lb-ubuntu-14-04-x86"
+  config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.provider :virtualbox do |vb|
+    vb.name   = "lb-ubuntu-14_04-x86"
+    vb.memory = 1024
+    vb.cpus   = 2
+  end
+end
