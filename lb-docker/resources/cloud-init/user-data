@@ -1,0 +1,7 @@
+#cloud-config
+password: mypassword
+ssh_pwauth: True
+chpasswd: { expire: False }
+
+ssh_authorized_keys:
+  - ssh-rsa ... foo@foo.com (insert ~/.ssh/id_rsa.pub here)
