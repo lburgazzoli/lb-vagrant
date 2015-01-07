@@ -1,0 +1,36 @@
+#cloud-config
+
+ssh_pwauth: False
+ssh_authorized_keys:
+  - ssh-rsa ...
+
+coreos:
+  fleet:
+    etcd_servers: "http://192.168.56.101:4001"
+  units:
+    - name: fleet.service
+      command: start
+    - name: 00-enp0s8.network
+      runtime: true
+      content: |
+        [Match]
+        Name=enp0s8
+
+        [Network]
+        DNS=192.168.56.1
+        Address=192.168.56.201/24
+        Gateway=192.168.56.1
+
+write_files:
+  - path: /etc/profile.d/etcdctl.sh
+    permissions: 0644
+    owner: core
+    content: |
+      export ETCDCTL_PEERS="http://192.168.56.101:4001"
+  - path: /etc/profile.d/fleetctl.sh
+    permissions: 0644
+    owner: core
+    content: |
+      # configure fleetctl to work with our etcd servers set above
+      export FLEETCTL_ENDPOINT=/var/run/fleet.sock
+      export FLEETCTL_EXPERIMENTAL_API=true
