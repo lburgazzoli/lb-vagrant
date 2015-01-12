@@ -5,6 +5,8 @@ ssh_authorized_keys:
   - ssh-rsa ...
 
 coreos:
+  update:
+    reboot-strategy: best-effort
   etcd:
     addr: 192.168.56.101:4001
   units:
