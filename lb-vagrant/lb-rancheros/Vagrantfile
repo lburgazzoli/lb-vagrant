@@ -15,7 +15,7 @@ Vagrant.configure(2) do |config|
      vb.functional_vboxsf     = false
      vb.memory                = "1024"
      vb.name                  = "lb-rancheros"
-     vb.gui                   = false
+     vb.gui                   = true
   end
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
