@@ -30,10 +30,10 @@ $new_discovery_url='https://discovery.etcd.io/new'
 # Change basename of the VM
 # The default value is "core", which results in VMs named starting with
 # "core-01" through to "core-${num_instances}".
-#$instance_name_prefix="core"
+$instance_name_prefix="lb-coreos"
 
 # Official CoreOS channel from which updates should be downloaded
-#$update_channel='alpha'
+$update_channel='alpha'
 
 # Log the serial consoles of CoreOS VMs to log/
 # Enable by setting value to true, disable with false
@@ -54,9 +54,9 @@ $new_discovery_url='https://discovery.etcd.io/new'
 #$share_home=false
 
 # Customize VMs
-#$vm_gui = false
-#$vm_memory = 1024
-#$vm_cpus = 1
+$vm_gui = false
+$vm_memory = 1024
+$vm_cpus = 2
 
 # Share additional folders to the CoreOS VMs
 # For example,
