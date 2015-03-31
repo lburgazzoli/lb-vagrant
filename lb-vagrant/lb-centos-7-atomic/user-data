@@ -1,0 +1,8 @@
+#cloud-config
+
+assword: atomic
+ssh_pwauth: True
+chpasswd: { expire: False }
+
+ssh_authorized_keys:
+  - ssh-rsa ... lb (insert ~/.ssh/id_rsa.pub here)
