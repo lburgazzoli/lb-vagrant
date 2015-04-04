@@ -12,5 +12,8 @@ curl -L https://get.docker.com/builds/Linux/x86_64/docker-latest > /usr/local/bi
 chmod ug+x /usr/local/bin/docker
 
 cp systemd-docker.service /usr/local/lib/systemd/system/docker.service
-cp systemd-docker.socket /usr/local/lib/systemd/system/docker.socket
+cp systemd-docker-tcp.socket /usr/local/lib/systemd/system/docker.socket
+
+systemctl enable docker.socker
+systemctl enable docker.service
 
