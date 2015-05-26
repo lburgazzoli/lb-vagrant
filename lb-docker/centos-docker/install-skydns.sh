@@ -1,6 +1,6 @@
 #!/bin/bash
 
-go get github.com/skynetservices/skydns
+go get -u github.com/skynetservices/skydns
 
 cd $GOPATH/src/github.com/skynetservices/skydns
 go build -v

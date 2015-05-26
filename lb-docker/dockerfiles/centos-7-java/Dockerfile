@@ -10,6 +10,7 @@ MAINTAINER lburgazzoli
 RUN yum -y update
 RUN yum -y install wget curl tar sudo
 RUN yum -y install subversion git
+RUN yum -y clean all
 
 RUN wget \
     --quiet \
