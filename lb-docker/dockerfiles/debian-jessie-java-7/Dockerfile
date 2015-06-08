@@ -1,4 +1,4 @@
-FROM lb:debian-jessie
+FROM lb/debian-jessie
 MAINTAINER lb
 
 ENV http_proxy http://172.17.42.1:8128
