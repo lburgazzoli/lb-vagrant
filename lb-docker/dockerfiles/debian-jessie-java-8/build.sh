@@ -3,6 +3,6 @@
 docker \
     --dns 172.17.42.1 \
     build \
-    --tag="lb/ubuntu-15.04-java-8" \
+    --tag="lb/debian-jessie-java-8" \
     .
 
