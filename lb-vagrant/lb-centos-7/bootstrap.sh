@@ -33,33 +33,33 @@ wget --quiet \
     --no-check-certificate \
     --no-cookies \
     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-    --output-document=/tmp/jdk-1.8.0_11.tar.gz \
-    http://download.oracle.com/otn-pub/java/jdk/8u11-b12/jdk-8u11-linux-x64.tar.gz
+    --output-document=/tmp/jdk-1.8.0.tar.gz \
+    http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-x64.tar.gz
 
 wget --quiet \
     --no-check-certificate \
     --no-cookies \
     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-    --output-document=/tmp/jdk-1.7.0_67.tar.gz \
-    http://download.oracle.com/otn-pub/java/jdk/7u67-b01/jdk-7u67-linux-x64.tar.gz
+    --output-document=/tmp/jdk-1.7.0.tar.gz \
+    http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
 
 wget --quiet \
-    --output-document=/tmp/maven-3.2.2.tar.gz \
-    http://apache.fastbull.org/maven/maven-3/3.2.2/binaries/apache-maven-3.2.2-bin.tar.gz
+    --output-document=/tmp/maven.tar.gz \
+    http://apache.fastbull.org/maven/maven-3/3.2.2/binaries/apache-maven-3.3.3-bin.tar.gz
 
 wget --quiet \
-    --output-document=/tmp/gradle-2.0.zip \
-    https://services.gradle.org/distributions/gradle-2.0-bin.zip
+    --output-document=/tmp/gradle.zip \
+    https://services.gradle.org/distributions/gradle-2.4-bin.zip
 
-install_tgz /opt/java/jdk-1.8.0_11 /tmp/jdk-1.8.0_11.tar.gz
-install_tgz /opt/java/jdk-1.7.0_67 /tmp/jdk-1.7.0_67.tar.gz
-install_tgz /opt/tools/maven-3.2.2 /tmp/maven-3.2.2.tar.gz
-install_zip /opt/tools/gradle-2.0 /opt/tools /tmp/gradle-2.0.zip
+install_tgz /opt/java/jdk-1.8.0 /tmp/jdk-1.8.0.tar.gz
+install_tgz /opt/java/jdk-1.7.0 /tmp/jdk-1.7.0.tar.gz
+install_tgz /opt/tools/maven /tmp/maven.tar.gz
+install_zip /opt/tools/gradle /opt/tools /tmp/gradle.zip
 
-rm -f /tmp/jdk-1.8.0_11.tar.gz
-rm -f /tmp/jdk-1.7.0_67.tar.gz
-rm -f /tmp/maven-3.2.2.tar.gz
-rm -f /tmp/gradle-2.0.zip
+rm -f /tmp/jdk-1.8.0.tar.gz
+rm -f /tmp/jdk-1.7.0.tar.gz
+rm -f /tmp/maven.tar.gz
+rm -f /tmp/gradle.zip
 
 cp /vagrant/bashrc /home/vagrant/.bashrc
 
