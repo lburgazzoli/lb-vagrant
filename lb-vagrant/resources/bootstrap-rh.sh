@@ -16,6 +16,19 @@ function install_zip {
     unzip $3 -d $2
 }
 
+function install_java {
+    wget --quiet \
+        --no-check-certificate \
+        --no-cookies \
+        --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+        --output-document=/tmp/${2} \
+        http://download.oracle.com/otn-pub/java/jdk/${1}/${2}
+
+    install_tgz /tmp/${2} $3
+
+    rm -f /tmp/${2}
+}
+
 ######################################################################################
 #
 ######################################################################################
@@ -29,19 +42,8 @@ yum -y install git
 #
 ######################################################################################
 
-wget --quiet \
-    --no-check-certificate \
-    --no-cookies \
-    --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-    --output-document=/tmp/jdk-1.8.0.tar.gz \
-    http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-x64.tar.gz
-
-wget --quiet \
-    --no-check-certificate \
-    --no-cookies \
-    --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-    --output-document=/tmp/jdk-1.7.0.tar.gz \
-    http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
+install_java 8u45-b14 jdk-8u45-linux-x64.tar.gz /opt/java/jdk-1.8.0
+install_java 7u80-b15 jdk-7u80-linux-x64.tar.gz /opt/java/jdk-1.7.0
 
 wget --quiet \
     --output-document=/tmp/maven.tar.gz \
@@ -51,15 +53,13 @@ wget --quiet \
     --output-document=/tmp/gradle.zip \
     https://services.gradle.org/distributions/gradle-2.4-bin.zip
 
-install_tgz /opt/java/jdk-1.8.0 /tmp/jdk-1.8.0.tar.gz
-install_tgz /opt/java/jdk-1.7.0 /tmp/jdk-1.7.0.tar.gz
+wget --quiet \
+    --output-document=/home/vagrant/.bashrc \
+    https://github.com/lburgazzoli/lb-devops/blob/master/lb-vagrant/resources/bashrc-rh
+
 install_tgz /opt/tools/maven /tmp/maven.tar.gz
 install_zip /opt/tools/gradle /opt/tools /tmp/gradle.zip
 
-rm -f /tmp/jdk-1.8.0.tar.gz
-rm -f /tmp/jdk-1.7.0.tar.gz
 rm -f /tmp/maven.tar.gz
 rm -f /tmp/gradle.zip
-
-cp /vagrant/bashrc /home/vagrant/.bashrc
 

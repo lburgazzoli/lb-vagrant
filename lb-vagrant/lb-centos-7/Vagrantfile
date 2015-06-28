@@ -2,7 +2,7 @@ Vagrant.configure("2") do |config|
   config.vm.box      = "centos/7"
   config.vm.hostname = "lb-centos-7-vagrant"
   
-  config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.provision :shell, path: "https://github.com/lburgazzoli/lb-devops/blob/master/lb-vagrant/resources/bootstrap-rh.sh"
 
   config.vm.provider :virtualbox do |vb|
     vb.name                  = "lb-centos-7-vagrant"
