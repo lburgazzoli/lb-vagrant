@@ -15,16 +15,23 @@ function install_tgz {
 }
 
 function install_java {
+    JAVA_VERSION_MAJOR=$1
+    JAVA_VERSION_MINOR=$2
+    JAVA_VERSION_BUILD=$3
+    
+    JAVA_BUILD="${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}"
+    JAVA_ARCHIVE="jdk-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz"
+
     wget --quiet \
         --no-check-certificate \
         --no-cookies \
         --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-        --output-document=/tmp/${2} \
-        http://download.oracle.com/otn-pub/java/jdk/${1}/${2}
+        --output-document=/tmp/${JAVA_ARCHIVE} \
+        http://download.oracle.com/otn-pub/java/jdk/${JAVA_BUILD}/${JAVA_ARCHIVE}
 
-    install_tgz /opt/java/${3} /tmp/${2} /opt/java/${3}
+    install_tgz /opt/java/${4} /tmp/${JAVA_ARCHIVE} /opt/java/${4}
 
-    rm -f /tmp/${2}
+    rm -f /tmp/${JAVA_ARCHIVE}
 }
 
 ######################################################################################
@@ -48,8 +55,12 @@ if [ ! -d /opt/java ]; then
     mkdir -p /opt/java
 fi
 
-install_java 8u45-b14 jdk-8u45-linux-x64.tar.gz jdk-1.8.0
-install_java 7u80-b15 jdk-7u80-linux-x64.tar.gz jdk-1.7.0
+JAVA_VERSION_MAJOR 8
+ENV JAVA_VERSION_MINOR 45
+ENV JAVA_VERSION_BUILD 14
+
+install_java 8 45 14 jdk-1.8.0
+install_java 7 80 15 jdk-1.7.0
 
 V_MAVEN=3.3.3
 V_GRADLE=2.4
