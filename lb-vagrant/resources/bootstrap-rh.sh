@@ -61,7 +61,7 @@ get https://raw.githubusercontent.com/lburgazzoli/lb-devops/master/lb-vagrant/re
 install_tgz /opt/tools/maven /tmp/maven-${V_MAVEN}.tar.gz
 
 rm -rf /opt/tools/gradle
-unzip /tmp/gradle.zip -d /opt/tools
+unzip /tmp/gradle-${V_GRADLE}.zip -d /opt/tools
 mv /opt/tools/gradle-${V_GRADLE} /opt/tools/gradle
 
 rm -f /tmp/maven-${V_MAVEN}.tar.gz
