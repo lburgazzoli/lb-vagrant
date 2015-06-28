@@ -1,9 +1,8 @@
 CLOUD_CONFIG_PATH = File.join(File.dirname(__FILE__), "user-data")
 
 Vagrant.configure("2") do |config|
-  config.vm.box      = "b-centos-7-atomic-vagrant"
-  config.vm.box_url  = "http://buildlogs.centos.org/rolling/7/isos/x86_64/CentOS-7-x86_64-AtomicHost-Vagrant-VirtualBox.box"
-  config.vm.hostname = "b-centos-7-atomic-vagrant"
+  config.vm.box      = "centos/atomic-host"
+  config.vm.hostname = "lb-centos-7-atomic-vagrant"
 
   config.vm.provider :virtualbox do |vb|
     vb.name                  = "lb-centos-7-atomic-vagrant"

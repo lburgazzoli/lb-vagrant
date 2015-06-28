@@ -1,0 +1,14 @@
+Vagrant.configure("2") do |config|
+  config.vm.box      = "centos/7"
+  config.vm.hostname = "lb-centos-7-vagrant"
+
+  config.vm.provider :virtualbox do |vb|
+    vb.name                  = "lb-centos-7-vagrant"
+    vb.memory                = 1024
+    vb.cpus                  = 4
+    vb.check_guest_additions = false
+    vb.functional_vboxsf     = false
+    vb.gui                   = true
+  end
+
+end
