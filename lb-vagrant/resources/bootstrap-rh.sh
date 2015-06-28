@@ -19,8 +19,10 @@ function install_java {
     JAVA_VERSION_MINOR=$2
     JAVA_VERSION_BUILD=$3
     
+    JAVA_ARC="x64"
     JAVA_BUILD="${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}"
-    JAVA_ARCHIVE="jdk-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz"
+    JAVA_ARCHIVE="jdk-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-${JAVA_ARC}.tar.gz"
+    JAVA_NAME="jdk-1.${JAVA_VERSION_MAJOR}.0"
 
     wget --quiet \
         --no-check-certificate \
@@ -29,7 +31,7 @@ function install_java {
         --output-document=/tmp/${JAVA_ARCHIVE} \
         http://download.oracle.com/otn-pub/java/jdk/${JAVA_BUILD}/${JAVA_ARCHIVE}
 
-    install_tgz /opt/java/${4} /tmp/${JAVA_ARCHIVE} /opt/java/${4}
+    install_tgz /opt/java/${JAVA_NAME} /tmp/${JAVA_ARCHIVE} /opt/java/${JAVA_NAME}
 
     rm -f /tmp/${JAVA_ARCHIVE}
 }
@@ -55,12 +57,8 @@ if [ ! -d /opt/java ]; then
     mkdir -p /opt/java
 fi
 
-JAVA_VERSION_MAJOR 8
-ENV JAVA_VERSION_MINOR 45
-ENV JAVA_VERSION_BUILD 14
-
-install_java 8 45 14 jdk-1.8.0
-install_java 7 80 15 jdk-1.7.0
+install_java 8 45 14
+install_java 7 80 15
 
 V_MAVEN=3.3.3
 V_GRADLE=2.4
