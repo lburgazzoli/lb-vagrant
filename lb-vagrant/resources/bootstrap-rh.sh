@@ -24,7 +24,7 @@ function install_java {
         --output-document=/tmp/${2} \
         http://download.oracle.com/otn-pub/java/jdk/${1}/${2}
 
-    install_tgz /tmp/${2} $3
+    install_tgz /tmp/${2} ${3}
 
     rm -f /tmp/${2}
 }
@@ -55,7 +55,7 @@ wget --quiet \
 
 wget --quiet \
     --output-document=/home/vagrant/.bashrc \
-    https://github.com/lburgazzoli/lb-devops/blob/master/lb-vagrant/resources/bashrc-rh
+    https://raw.githubusercontent.com/lburgazzoli/lb-devops/master/lb-vagrant/resources/bashrc-rh
 
 install_tgz /opt/tools/maven /tmp/maven.tar.gz
 install_zip /opt/tools/gradle /opt/tools /tmp/gradle.zip
