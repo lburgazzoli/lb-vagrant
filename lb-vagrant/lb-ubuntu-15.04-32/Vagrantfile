@@ -1,7 +1,9 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/vivid32"
   config.vm.hostname = "lb-ubuntu-15-04-x86"
-  config.vm.provision :shell, path: "bootstrap.sh"
+
+  config.vm.provision :shell, path: "https://raw.githubusercontent.com/lburgazzoli/lb-devops/master/lb-vagrant/resources/bootstrap.sh"
+
   config.vm.provider :virtualbox do |vb|
     vb.name   = "lb-ubuntu-15_04-x86"
     vb.memory = 1024

@@ -40,10 +40,20 @@ function install_java {
 #
 ######################################################################################
 
-yum -y update
-yum -y install unzip
-yum -y install wget
-yum -y install git
+if [ -f /etc/debian_version ]; then
+    # debian / ubuntu
+    apt-get -y update
+    #apt-get install --no-install-recommends -y python-software-properties
+    apt-get install --no-install-recommends -y unzip
+    apt-get install --no-install-recommends -y wget
+    apt-get install --no-install-recommends -y git
+elif [ -f /etc/redhat-release ] || [ -f /etc/centos-release ] ; then
+    # centos / redhat
+    yum -y update
+    yum -y install unzip
+    yum -y install wget
+    yum -y install git
+fi
 
 ######################################################################################
 #
@@ -65,7 +75,7 @@ V_GRADLE=2.4
 
 get http://apache.fastbull.org/maven/maven-3/${V_MAVEN}/binaries/apache-maven-${V_MAVEN}-bin.tar.gz /tmp/maven-${V_MAVEN}.tar.gz
 get https://services.gradle.org/distributions/gradle-${V_GRADLE}-bin.zip /tmp/gradle-${V_GRADLE}.zip
-get https://raw.githubusercontent.com/lburgazzoli/lb-devops/master/lb-vagrant/resources/bashrc-rh /home/vagrant/.bashrc
+get https://raw.githubusercontent.com/lburgazzoli/lb-devops/master/lb-vagrant/resources/bashrc /home/vagrant/.bashrc
 
 install_tgz /opt/tools/maven /tmp/maven-${V_MAVEN}.tar.gz
 
