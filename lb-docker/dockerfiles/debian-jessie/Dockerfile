@@ -1,5 +1,9 @@
+############################################################
+# Debian Jessie 
+############################################################
+
 FROM debian:jessie
-MAINTAINER lb
+MAINTAINER lburgazzoli
 
 ENV http_proxy http://172.17.42.1:8128
 ENV https_proxy http://172.17.42.1:8128

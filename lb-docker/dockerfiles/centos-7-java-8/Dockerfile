@@ -1,17 +1,21 @@
+############################################################
+# CentOS 7 / Java 1.8
+############################################################
+
 FROM lb/centos-7
-MAINTAINER lb
+MAINTAINER lburgazzoli
 
 ENV http_proxy http://172.17.42.1:8128
 ENV https_proxy http://172.17.42.1:8128
 
 ENV JAVA_VERSION_MAJOR 8
-ENV JAVA_VERSION_MINOR 45
-ENV JAVA_VERSION_BUILD 14
+ENV JAVA_VERSION_MINOR 51
+ENV JAVA_VERSION_BUILD 16
 ENV JAVA_PACKAGE       jdk
 ENV JAVA_BUILD         "${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}"
 ENV JAVA_ARCHIVE       "${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz"
 
-RUN mkdir -p /opt/java &&\
+RUN mkdir -p /opt/java && \
     curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" \
         "http://download.oracle.com/otn-pub/java/jdk/${JAVA_BUILD}/${JAVA_ARCHIVE}" \
         | gunzip -c - \
