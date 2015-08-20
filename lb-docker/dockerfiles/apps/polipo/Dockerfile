@@ -20,7 +20,8 @@ RUN \
         $DOCKER_USER \
     && apt-get update \
     && apt-get install --no-install-recommends -y \
-        polipo
+        polipo \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR $DOCKER_HOME
 USER $DOCKER_USER
