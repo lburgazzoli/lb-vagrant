@@ -67,11 +67,11 @@ if [ ! -d /opt/java ]; then
     mkdir -p /opt/java
 fi
 
-install_java 8 45 14
+install_java 8 66 17
 install_java 7 80 15
 
-V_MAVEN=3.3.3
-V_GRADLE=2.4
+V_MAVEN=3.3.9
+V_GRADLE=2.10
 
 get http://apache.fastbull.org/maven/maven-3/${V_MAVEN}/binaries/apache-maven-${V_MAVEN}-bin.tar.gz /tmp/maven-${V_MAVEN}.tar.gz
 get https://services.gradle.org/distributions/gradle-${V_GRADLE}-bin.zip /tmp/gradle-${V_GRADLE}.zip
@@ -85,3 +85,4 @@ mv /opt/tools/gradle-${V_GRADLE} /opt/tools/gradle
 
 rm -f /tmp/maven-${V_MAVEN}.tar.gz
 rm -f /tmp/gradle-${V_GRADLE}.zip
+
