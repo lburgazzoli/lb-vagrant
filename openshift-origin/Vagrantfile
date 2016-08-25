@@ -1,0 +1,21 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$vmMemory = Integer(ENV['FABRIC8_VM_MEMORY'] || 4096)
+$vmName   = ENV['FABRIC8_VM_NAME'] || "openshift-origin"
+$windows  = (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+$linux    = (/linux/ =~ RUBY_PLATFORM) != nil
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "openshift/origin-all-in-one"
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = $vmMemory
+    v.cpus   = 2
+    v.name   = $vmName
+
+    if not $linux
+        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    end
+  end
+end
