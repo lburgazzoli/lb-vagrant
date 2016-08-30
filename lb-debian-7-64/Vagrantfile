@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/wheezy64"
   config.vm.hostname = "lb-debian-7-x64"
-  config.vm.provision :shell, path: "https://raw.githubusercontent.com/lburgazzoli/lb-vagrant/resources/bootstrap.sh"
+  config.vm.provision :shell, path: "https://raw.githubusercontent.com/lburgazzoli/lb-vagrant/master/resources/bootstrap.sh"
   config.vm.provider :virtualbox do |vb|
     vb.name   = "lb-debian-7-x64"
     vb.memory = 2024
