@@ -1,10 +1,22 @@
+
+$home      = ENV['HOME']
+$logname   = ENV['LOGNAME']
+$provision = "https://raw.githubusercontent.com/lburgazzoli/lb-vagrant/master/resources/bootstrap.sh"
+$vmName    = "lb-debian-7"
+$vmMemory  = 2048
+$vmCPUs    = 2
+
+################################################################################
+#
+################################################################################
+
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/wheezy64"
-  config.vm.hostname = "lb-debian-7-x64"
-  config.vm.provision :shell, path: "https://raw.githubusercontent.com/lburgazzoli/lb-vagrant/master/resources/bootstrap.sh"
+  config.vm.hostname = $vmName
+  config.vm.provision :shell, path: $provision
   config.vm.provider :virtualbox do |vb|
-    vb.name   = "lb-debian-7-x64"
-    vb.memory = 2024
-    vb.cpus   = 2
+    vb.name   = $vmName
+    vb.memory = $vmMemory
+    vb.cpus   = $vmCPUs
   end
 end
